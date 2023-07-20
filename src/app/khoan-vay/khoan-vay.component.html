@@ -1,0 +1,26 @@
+<div>
+  <label for="khuVuc">Chọn khu vực vay:</label>
+  <select id="khuVuc" [(ngModel)]="selectedKV" (change)="handleSelectChange()">
+    <option value="Lựa chọn">Lựa chọn</option>
+    <option value="KV1">KV1</option>
+    <option value="KV2">KV2</option>
+    <option value="KV3">KV3</option>
+    <option value="KV4">KV4</option>
+  </select>
+</div>
+
+<div *ngIf="khoanVayData !== null">
+  <div>
+    <p>Trạng thái hiện tại của khoản vay: <input type="text" [(ngModel)]="khoanVayData.trang_thai_vay"></p>
+    <p>Số tiền vay: <input type="text" [(ngModel)]="khoanVayData.so_tien_vay"></p>
+    <p>Ngày bắt đầu: <input type="text" [(ngModel)]="khoanVayData.ngay_bat_dau"></p>
+    <p>Ngày kết thúc: <input type="text" [(ngModel)]="khoanVayData.ngay_ket_thuc"></p>
+    <p>Lãi suất: <input type="text" [(ngModel)]="khoanVayData.lai_suat"></p>
+  </div>
+</div>
+<!-- <app-sao-ke [selectedKV]="selectedKV"></app-sao-ke> -->
+
+<button *ngIf="selectedKV !== 'Lựa chọn'" [routerLink]="['/sao-ke']" [queryParams]="{selectedKV: selectedKV}">Sao kê</button>
+
+
+<button (click)="lichDuThu()">Lịch dự thu</button>

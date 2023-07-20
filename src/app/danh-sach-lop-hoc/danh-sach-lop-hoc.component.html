@@ -1,0 +1,29 @@
+<div>
+  <label for="lopHoc">Chọn lớp học:</label>
+  <select id="lopHoc" [(ngModel)]="selectedLop" (ngModelChange)="hienThiDuLieu()">
+    <option value="Lớp 0">Lớp 0</option>
+    <option value="Lớp A">Lớp A</option>
+    <option value="Lớp B">Lớp B</option>
+  </select>
+</div>
+<div *ngIf="selectedLop === 'Lớp 0'">
+  <h2>Lớp: <input type="text" [value]="''" readonly></h2>
+  <p>Giáo viên chủ nhiệm: <input type="text" [value]="''" readonly></p>
+  <p>Loại học lực: <input type="text" [value]="''" readonly></p>
+</div>
+<div *ngIf="lopHocData && selectedLop !== 'Lớp 0'">
+  <h2>Lớp: <input type="text" [value]="lopHocData.ten_lop" readonly></h2>
+  <p>Giáo viên chủ nhiệm: <input type="text" [value]="lopHocData.giao_vien_chu_nhiem" readonly></p>
+  <p>Loại học lực: <input type="text" [value]="lopHocData.loai_hoc_luc" readonly></p>
+</div>
+
+<div *ngIf="lopHocData && selectedLop !== 'Lớp 0'">
+  <label for="selectSinhVien">Chọn sinh viên:</label>
+  <select id="selectSinhVien" (change)="hienThiSinhVien($event)">
+    <option *ngFor="let sinhVien of lopHocData.danh_sach_sinh_vien" [value]="sinhVien">{{ sinhVien }}</option>
+  </select>
+</div>
+
+<div *ngIf="sinhVienData">
+  <p>Tên sinh viên: <input type="text" [value]="sinhVienData" readonly></p>
+</div>

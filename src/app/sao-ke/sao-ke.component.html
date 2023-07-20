@@ -1,0 +1,16 @@
+<!-- sao-ke.component.html -->
+<div *ngIf="kvValue">
+  <input type="text" [value]="kvValue.ten" readonly>
+</div>
+<div *ngIf="kvData">
+  <h2>{{ kvData.ten_lop }}</h2>
+  <p>Số tiền vay: {{ kvData.so_tien_vay }}</p>
+  <p>Thời gian vay: {{ kvData.thoi_gian_vay }}</p>
+  <p>Lãi suất: {{ kvData.lai_suat }}</p>
+  <p>Dư nợ còn lại: {{ kvData.du_no_con_lai }}</p>
+  <p>Số tiền thu trong kỳ: {{ kvData.so_tien_thu_trong_ky }}</p>
+  <p>Trạng thái thu nợ: {{ kvData.trang_thai_thu_no }}</p>
+  <p>Số dư: {{ kvData.so_du_vi }}</p>
+</div>
+
+<button (click)="quayVeKhoanVay()">Quay về Khoản vay</button>
